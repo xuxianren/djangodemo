@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from rest_framework.authentication import TokenAuthentication
 from django.middleware.csrf import CsrfViewMiddleware
 class LoginView(APIView):
     permission_classes = []

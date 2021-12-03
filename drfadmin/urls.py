@@ -17,11 +17,16 @@ from django.contrib import admin
 from django.urls import path, include
 from apps.auth.views import LoginView, LogoutView
 from rest_framework.authtoken.views import obtain_auth_token
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('system/', include('apps.system.urls')),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api-auth/', include('rest_framework.urls',
+                              namespace='rest_framework')),
     path("login", LoginView.as_view()),
     path("logout", LogoutView.as_view()),
-    path("token/login", obtain_auth_token)
+    path("token/login", obtain_auth_token),
+    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    path('rbac/', include('apps.rbac.urls')),
+    path('jwt/', include('apps.jwtdemo.urls')),
 ]
